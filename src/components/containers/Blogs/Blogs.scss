@@ -1,0 +1,95 @@
+.blogs-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    background: #f8fafd;
+  
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      font-family: "Montserrat-Medium";
+      color: #708037;
+      margin-bottom: 2rem;
+    }
+  
+    .blogs-swiper {
+      padding-bottom: 3rem;
+      margin: 0 4rem;
+  
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+      }
+  
+      .blog-card {
+        width: 340px;
+        height: 480px;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+
+      }
+  
+      .image {
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      .content {
+        padding: 1.2rem;
+        flex: 1;
+  
+        h4 {
+          font-size: 18px;
+          font-family: "Montserrat-Medium";
+          color: #708037;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+  
+        p {
+          font-size: 14px;
+          color: #444;
+          margin-bottom: 15px;
+          font-family: "Montserrat-Regular";
+          line-height: 30px;
+        }
+  
+        a {
+          color: #708037;
+          text-decoration: none;
+          font-size: 14px;
+          font-family: "Montserrat-Medium";
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .blogs-container {
+      padding: 2rem 1rem;
+    }
+  
+    .blogs-swiper {
+      margin: 0 !important;
+      .swiper-slide {
+        width: 100% !important; // Ensures the slide takes full width
+      }
+  
+      .blog-card {
+        width: 100% !important;
+        height: auto !important;
+      }
+  
+      .image {
+        height: 180px !important;
+      }
+    }
+  }
+  

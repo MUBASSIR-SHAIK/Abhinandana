@@ -1,0 +1,326 @@
+.ventures {
+  padding: 1rem;
+  max-width: 950px;
+  margin: auto;
+  padding-top: 0;
+
+  .ventures-title {
+    font-size: 28px;
+    color: #6c8132;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+    font-family: "Montserrat-Medium";
+  }
+
+  .venture-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .venture-tab {
+      padding: 10px 18px;
+      border: 1px solid #708037;
+      border-radius: 50px;
+      background: white;
+      color: #708037;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: "Montserrat-Medium";
+
+      &.active {
+        background: #708037;
+        color: white;
+      }
+    }
+  }
+
+  .branch-nav-slider-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.1rem;
+    position: relative;
+
+    .branch-label {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #222;
+      font-family: "Montserrat-Bold";
+      min-width: 110px;
+      letter-spacing: 1px;
+      background: transparent;
+      padding: 0 18px;
+      transition: color 0.2s;
+      position: relative;
+      left: 0;
+    }
+    .branch-slider-arrows {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      .branch-arrow-btn {
+        border: none;
+        background: #ededed;
+        color: #222;
+        padding: 8px 15px;
+        border-radius: 2px;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+
+        &:hover:not(.disabled),
+        &:focus-visible:not(.disabled) {
+          background: linear-gradient(90deg, #708037 0%, #6c8132 100%);
+          color: #fff;
+        }
+        &.disabled {
+          opacity: 0.45;
+          cursor: not-allowed;
+          background: #ededed;
+          color: #999;
+        }
+      }
+    }
+  }
+
+  .branch-label-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    .branch-label-tab {
+      background: none;
+      border: none;
+      font-weight: 600;
+      padding: 10px 24px;
+      cursor: pointer;
+      color: #444;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s, color 0.2s;
+      font-family: "Montserrat-Medium";
+      font-size: 1.05rem;
+      position: relative;
+
+      &.active {
+        color: #708037;
+        border-bottom: 2.5px solid #708037;
+      }
+    }
+
+    .branch-label-tab:not(:last-child)::after {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 20px;
+      background: #d0d0d0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .branch-label-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2rem;
+
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .location-map-content img,
+    .layout-content img {
+      max-width: 420px;
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .pricing-content {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      h4 {
+        color: #222;
+        font-size: 1.45rem;
+        margin-bottom: 1rem;
+        text-align: left;
+        width: 100%;
+        font-family: "Montserrat-Bold";
+        span {
+          font-weight: 700;
+        }
+      }
+      .pricing-description {
+        color: #444;
+        font-family: "Montserrat-Regular";
+        font-size: 1.08rem;
+        margin-bottom: 1.2rem;
+        text-align: left;
+        width: 100%;
+      }
+      .pricing-details-list {
+        list-style: disc inside;
+        margin: 0 0 0 0.5rem;
+        padding: 0 0 0 0.5rem;
+        width: 100%;
+        li {
+          color: #708037;
+          font-size: 1.05rem;
+          margin-bottom: 0.5rem;
+          font-family: "Montserrat-SemiBold";
+          .pricing-detail-key {
+            font-weight: 600;
+            color: #222;
+          }
+          .pricing-detail-value {
+            font-weight: 500;
+            color: #444;
+          }
+        }
+      }
+    }
+
+    .default-label-content {
+      color: #888;
+      font-size: 1rem;
+      padding: 2rem 0;
+      font-family: "Montserrat-Medium";
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .ventures-application-form {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 2rem auto;
+    background: #f8f9f5;
+    border-radius: 9px;
+    padding: 28px 22px 16px 22px;
+    box-shadow: 0 2px 24px 0 rgba(60,90,40,0.06);
+
+    h3 {
+      text-align: center;
+      color: #708037;
+      margin-bottom: 1.5rem;
+      font-family: "Montserrat-Bold";
+    }
+    h4 {
+      margin: 1.2rem 0 0.7rem 0;
+      font-size: 1.07rem;
+      color: #444;
+      font-family: "Montserrat-SemiBold";
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.1rem;
+      > label {
+        flex: 1 1 180px;
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        color: #555;
+        font-family: "Montserrat-Medium";
+        input,
+        select {
+          margin-top: 4px;
+          padding: 8px 10px;
+          border: 1px solid #bfc8a4;
+          border-radius: 5px;
+          font-size: 1rem;
+          font-family: "Montserrat-Regular";
+          outline: none;
+          background: #fff;
+          transition: border 0.2s;
+          &:focus {
+            border-color: #708037;
+          }
+        }
+      }
+    }
+
+    .ventures-application-btn {
+      margin-top: 1.5rem;
+      padding: 11px 0;
+      width: 100%;
+      background: linear-gradient(90deg, #708037 0%, #6c8132 100%);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.13rem;
+      font-family: "Montserrat-Bold";
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px 0 rgba(60,90,40,0.07);
+
+      &:hover, &:focus-visible {
+        background: linear-gradient(90deg, #6c8132 0%, #708037 100%);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .branch-label-content {
+      align-items: center;
+
+      .location-map-content img,
+      .layout-content img,
+      .pricing-content {
+        max-width: 100%;
+      }
+    }
+    .branch-label-tabs {
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.99rem;
+    }
+    .branch-nav-slider-top {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .branch-label {
+        font-size: 1.3rem !important;
+        min-width: 70px !important;
+        padding: 0 10px !important;
+        margin-bottom: 0.6rem;
+      }
+      .branch-slider-arrows {
+        position: static;
+        margin-left: 0;
+        margin-top: 0.4rem;
+        transform: none;
+      }
+    }
+    .pricing-content {
+      align-items: flex-start !important;
+    }
+  }
+}
