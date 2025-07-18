@@ -28,10 +28,10 @@ const Footer = () => {
               <p className="footer__contact-title">LOREM ISP</p>
               <p className="footer__contact-desc">There are many variations</p>
               <p className="footer__contact-info">
-                <FaPhoneAlt /> 123 456 7890
+                <FaPhoneAlt /> +040-66637799
               </p>
               <p className="footer__contact-info">
-                <FaEnvelope /> Info@loremispsum.com
+                <FaEnvelope /> abh.hyderabad1@gmail.com
               </p>
             </div>
           ))}
@@ -52,12 +52,12 @@ const Footer = () => {
           </div>
           <div className="footer__address">
             <h4>Contact Us</h4>
-            <p>Call: +91 80198 40808</p>
+            <p>Call: +040-66637799</p>
             <p>
               Cyber Gateway, BUILDING-1, Wing 1, Level 3, HITEC City, Hyderabad,
               Telangana 500081
             </p>
-            <p>Email: info@refly.com</p>
+            <p>Email:  abh.hyderabad1@gmail.com</p>
           </div>
         </div>
 

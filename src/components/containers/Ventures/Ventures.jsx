@@ -1,37 +1,50 @@
 import React, { useState } from "react";
 import "./Ventures.scss";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+
+// Default images
 import MapImage from "../../../assets/images/img/Hyd-Location.png";
-import LayoutImage from "../../../assets/images/img/LayoutImage.png"; // <-- Update this path to your layout image
+import LayoutImage from "../../../assets/images/img/Sai Akshara Layout.jpg";
+import BrochureImage from "../../../assets/images/img/Sai Akshara Brochure.jpg";
+import PlotsImage from "../../../assets/images/img/Sai Akshara Plot.jpg";
+
+// Vizag-specific images
+import VizagMapImage from "../../../assets/images/img/Sai Mahalakshmi location.jpg";
+import VizagLayoutImage from "../../../assets/images/img/Sai Mahalakshmi layout.jpg";
+import VizagBrochureImage from "../../../assets/images/img/Sai Mahalakshmi Brocher.jpg";
+import VizagPlotsImage from "../../../assets/images/img/Sai Mahalakshmi Plot.jpg";
+
 import ApplicationForm from "./ApplicationForm";
 
 const LABELS = [
   "Location map",
-  "Brocher",
+  "Brochure",
   "Layout",
   "Plots",
   "Pricing",
   "Application",
 ];
 
-function getBranches(branchCount = 1) {
+function getBranches(branchCount = 1, customImages = null) {
   const branches = [];
   for (let i = 1; i <= branchCount; i++) {
     branches.push({
       name: `Branch-${i}`,
       tabs: {
         "Location map": {
-          image: MapImage,
+          image: customImages?.["Location map"] || MapImage,
           content: null,
         },
-        "Brocher": {
+        "Brochure": {
+          image: customImages?.["Brochure"] || BrochureImage,
           content: null,
         },
         "Layout": {
-          image: LayoutImage,
+          image: customImages?.["Layout"] || LayoutImage,
           content: null,
         },
         "Plots": {
+          image: customImages?.["Plots"] || PlotsImage,
           content: null,
         },
         "Pricing": {
@@ -44,10 +57,10 @@ function getBranches(branchCount = 1) {
             Parking: "Yes",
           },
           description:
-            "The layout and design of flats in Monterrey can vary greatly depending on the specific building, location, and style. However, many flats in Monterrey are designed with an open floor plan, which often includes a combined living and dining area that opens onto a balcony or terrace.",
+            "The layout and design of flats in Monterrey can vary greatly depending on the specific building, location, and style. However, many flats in Monterrey are designed with an open floor plan...",
         },
         "Application": {
-          content: null, // ApplicationForm will be rendered instead
+          content: null,
         },
       },
     });
@@ -61,12 +74,17 @@ const CITY_DATA = [
     branches: getBranches(3),
   },
   {
-    label: "Vizag",
-    branches: getBranches(1),
+    label: "Vijayawada",
+    branches: getBranches(2),
   },
   {
-    label: "Vijayawada",
-    branches: getBranches(1),
+    label: "Vizag",
+    branches: getBranches(1, {
+      "Location map": VizagMapImage,
+      "Brochure": VizagBrochureImage,
+      "Layout": VizagLayoutImage,
+      "Plots": VizagPlotsImage,
+    }),
   },
   {
     label: "Guntur",
@@ -88,20 +106,19 @@ const Ventures = () => {
   const label = LABELS[activeLabel];
   const tabData = branch.tabs[label];
 
-  // Reset branch and label when city is changed
   const handleCityChange = (idx) => {
     setActiveCity(idx);
     setActiveBranch(0);
     setActiveLabel(0);
   };
 
-  // Slide arrows for branches
   const handleBranchNext = () => {
     if (activeBranch < city.branches.length - 1) {
       setActiveBranch(activeBranch + 1);
       setActiveLabel(0);
     }
   };
+
   const handleBranchPrev = () => {
     if (activeBranch > 0) {
       setActiveBranch(activeBranch - 1);
@@ -112,6 +129,7 @@ const Ventures = () => {
   return (
     <div className="ventures">
       <h2 className="ventures-title">Ventures</h2>
+
       <div className="venture-tabs">
         {CITY_DATA.map((city, idx) => (
           <button
@@ -123,7 +141,7 @@ const Ventures = () => {
           </button>
         ))}
       </div>
-      {/* Branch navigation with side arrows at right top */}
+
       <div className="branch-nav-slider-top">
         <div className="branch-label">{city.branches[activeBranch].name}</div>
         <div className="branch-slider-arrows">
@@ -144,7 +162,6 @@ const Ventures = () => {
         </div>
       </div>
 
-      {/* Slide navigation labels */}
       <div className="branch-label-tabs">
         {LABELS.map((lbl, idx) => (
           <button
@@ -158,21 +175,30 @@ const Ventures = () => {
       </div>
 
       <div className="branch-label-content">
-        {/* Location map tab */}
         {label === "Location map" && tabData.image && (
           <div className="location-map-content center-content">
             <img src={tabData.image} alt="Location Map" />
           </div>
         )}
 
-        {/* Layout tab */}
+        {label === "Brochure" && tabData.image && (
+          <div className="brochure-content center-content">
+            <img src={tabData.image} alt="Brochure" />
+          </div>
+        )}
+
         {label === "Layout" && tabData.image && (
           <div className="layout-content center-content">
             <img src={tabData.image} alt="Layout" />
           </div>
         )}
 
-        {/* Pricing tab */}
+        {label === "Plots" && tabData.image && (
+          <div className="plots-content center-content">
+            <img src={tabData.image} alt="Plots" />
+          </div>
+        )}
+
         {label === "Pricing" && (
           <div className="pricing-content center-content">
             <h4>
@@ -181,36 +207,42 @@ const Ventures = () => {
             <p className="pricing-description">{tabData.description}</p>
             <ul className="pricing-details-list">
               <li>
-                <span className="pricing-detail-key">Bedrooms</span> : <span className="pricing-detail-value">{tabData.details.Bedrooms}</span>
+                <span className="pricing-detail-key">Bedrooms</span> :{" "}
+                <span className="pricing-detail-value">{tabData.details.Bedrooms}</span>
               </li>
               <li>
-                <span className="pricing-detail-key">Bathrooms</span> : <span className="pricing-detail-value">{tabData.details.Bathrooms}</span>
+                <span className="pricing-detail-key">Bathrooms</span> :{" "}
+                <span className="pricing-detail-value">{tabData.details.Bathrooms}</span>
               </li>
               <li>
-                <span className="pricing-detail-key">Area Size</span> : <span className="pricing-detail-value">{tabData.details["Area Size"]}</span>
+                <span className="pricing-detail-key">Area Size</span> :{" "}
+                <span className="pricing-detail-value">{tabData.details["Area Size"]}</span>
               </li>
               <li>
-                <span className="pricing-detail-key">Parking</span> : <span className="pricing-detail-value">{tabData.details.Parking}</span>
+                <span className="pricing-detail-key">Parking</span> :{" "}
+                <span className="pricing-detail-value">{tabData.details.Parking}</span>
               </li>
             </ul>
           </div>
         )}
 
-        {/* Application tab */}
         {label === "Application" && (
           <div className="application-content center-content">
             <ApplicationForm />
           </div>
         )}
 
-        {/* All other tabs */}
-        {label !== "Location map" && label !== "Pricing" && label !== "Application" && label !== "Layout" && (
-          <div className="default-label-content">
-            {tabData.content || (
-              <span style={{ color: "#aaa" }}>No content yet for this section.</span>
-            )}
-          </div>
-        )}
+        {/* Default fallback for other or missing tabs */}
+        {label !== "Location map" &&
+          label !== "Brochure" &&
+          label !== "Layout" &&
+          label !== "Plots" &&
+          label !== "Pricing" &&
+          label !== "Application" && (
+            <div className="default-label-content">
+              {tabData.content || <span style={{ color: "#aaa" }}>No content yet for this section.</span>}
+            </div>
+          )}
       </div>
     </div>
   );

@@ -91,11 +91,11 @@ const Header = () => {
           <span className="call-head border-right">
             {" "}
             <IoCallSharp color="#757575" size={24} />
-            <h6> 123-456-7890</h6>
+            <h6> +040-66637799</h6>
           </span>
           <span className="call-head">
             <MdEmail color="#757575" size={24} />
-            <h6>Info@lorem.com</h6>
+            <h6> abh.hyderabad1@gmail.com</h6>
           </span>
         </div>
         <div className="top-social-menu">
